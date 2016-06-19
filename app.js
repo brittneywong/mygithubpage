@@ -7,5 +7,5 @@ ReactDOM.render(
 		<h1>brittney wong</h1>
 		<h3>sup</h3>
 	</div>,
-	document.getElementsByTagName('root')
+	document.getElementById('root')
 );
