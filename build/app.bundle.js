@@ -20365,13 +20365,37 @@
 	var Home = function (_React$Component) {
 	  _inherits(Home, _React$Component);
 
-	  function Home() {
+	  function Home(props) {
 	    _classCallCheck(this, Home);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this, props));
+
+	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.state = {
+	      clickedName: 0
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Home, [{
+	    key: "handleClick",
+	    value: function handleClick(event) {
+	      console.log(event);
+
+	      this.setState(function (state) {
+	        return { clickedName: state.clickedName += 1 };
+	      });
+	    }
+	  }, {
+	    key: "renderPanda",
+	    value: function renderPanda() {
+	      console.log(this.state);
+	      if (this.state.clickedName >= 3) {
+	        return React.createElement("img", { className: "panda panda-show", src: "http://www.newyorker.com/wp-content/uploads/2016/01/Wright-D.C-Panda-Obsession-1200.jpg" });
+	      }
+	      return React.createElement("img", { className: "panda", src: "http://www.newyorker.com/wp-content/uploads/2016/01/Wright-D.C-Panda-Obsession-1200.jpg" });
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      return React.createElement(
@@ -20379,15 +20403,21 @@
 	        null,
 	        React.createElement(
 	          "h1",
-	          { className: "home-title" },
-	          "brittney wong"
+	          {
+	            className: "home-title",
+	            onClick: this.handleClick },
+	          "Brittney Wong"
 	        ),
+	        React.createElement("hr", { className: "hr" }),
 	        React.createElement(
 	          "h3",
-	          null,
-	          "sup"
+	          { className: "description" },
+	          "Hey! I am a biomedical engineering student at Arizona State with interests in business, event planning, and biotechnology."
 	        ),
-	        React.createElement(Bio, null)
+	        React.createElement(Bio, null),
+	        this.renderPanda(),
+	        React.createElement(Info, null),
+	        React.createElement(Footer, null)
 	      );
 	    }
 	  }]);
@@ -20411,12 +20441,40 @@
 	        "div",
 	        null,
 	        React.createElement(
+	          "p",
+	          {
+	            className: "location" },
+	          "Tempe, Arizona"
+	        ),
+	        React.createElement(
 	          "ul",
-	          null,
+	          { className: "navigation-bar" },
 	          React.createElement(
 	            "li",
-	            null,
-	            "cool"
+	            { className: "email" },
+	            React.createElement(
+	              "a",
+	              { href: "mailto:brittneywong33@gmail.com" },
+	              "Email"
+	            )
+	          ),
+	          React.createElement(
+	            "li",
+	            { className: "LinkedIn" },
+	            React.createElement(
+	              "a",
+	              { href: "https://www.linkedin.com/in/brittneywong33" },
+	              "LinkedIn"
+	            )
+	          ),
+	          React.createElement(
+	            "li",
+	            { className: "VSCO" },
+	            React.createElement(
+	              "a",
+	              { href: "http://vsco.co/brittneywong3/images/1" },
+	              "VSCO"
+	            )
 	          )
 	        )
 	      );
@@ -20424,6 +20482,56 @@
 	  }]);
 
 	  return Bio;
+	}(React.Component);
+
+	var Info = function (_React$Component3) {
+	  _inherits(Info, _React$Component3);
+
+	  function Info() {
+	    _classCallCheck(this, Info);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Info).apply(this, arguments));
+	  }
+
+	  _createClass(Info, [{
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(
+	        "div",
+	        null,
+	        React.createElement("h2", { className: "info-title" })
+	      );
+	    }
+	  }]);
+
+	  return Info;
+	}(React.Component);
+
+	var Footer = function (_React$Component4) {
+	  _inherits(Footer, _React$Component4);
+
+	  function Footer() {
+	    _classCallCheck(this, Footer);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).apply(this, arguments));
+	  }
+
+	  _createClass(Footer, [{
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(
+	        "footer",
+	        null,
+	        React.createElement(
+	          "p",
+	          null,
+	          "made by brittney"
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Footer;
 	}(React.Component);
 
 	module.exports = Home;
